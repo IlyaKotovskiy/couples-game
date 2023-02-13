@@ -17,20 +17,17 @@ function shuffle(array) {
 // Функция самой игры.
 function newGame(container, cardsCount) {
     // Таймер
-    function timer() {
-        let timerDiv = document.getElementById('time');
-        timerDiv.textContent = 60;
-        let timer = setInterval(() => {
-            if (timerDiv.textContent == 0) {
-                clearInterval(timer);
-                alert('Время вышло :(');
-                container.innerHTML = '';
-                cardsArray = [];
-                newGame(container, cardsCount);
-            } else timerDiv.textContent--
-        }, 1000);
-    }
-    timer();
+    let timerDiv = document.getElementById('time');
+    timerDiv.textContent = 60;
+    let timer = setInterval(() => {
+        if (timerDiv.textContent == 0) {
+            clearInterval(timer);
+            alert('Время вышло :(');
+            container.innerHTML = '';
+            cardsArray = [];
+            newGame(container, cardsCount);
+        } else timerDiv.textContent--
+    }, 1000);
 
     // Игровое поле
     let cardsNumberArray = shuffle(createNumbersArray(cardsCount)),
@@ -77,9 +74,9 @@ function newGame(container, cardsCount) {
                 cardsArray = [];
 
                 newGame(container, cardsCount);
-                clearInterval(timer())
+                clearInterval(timer);
             }, 200)
         }
     }
 }
-newGame(document.getElementById('game'), 16, 100)
+newGame(document.getElementById('game'), 16)
